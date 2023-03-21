@@ -1,2 +1,5 @@
-# eleccions_backend
-Automatization flow: download files from sftp remote folder, parse the desired data into json and upload records to Airtable
+# Eleccions Dashboard Andorra backend
+Automatization flow: 
+  First we download files from sftp remote folder
+  Secondly, we parse the desired data into json
+  Finally, we upload records to Airtable
