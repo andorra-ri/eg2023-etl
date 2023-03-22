@@ -3,46 +3,41 @@ import os
 import dotenv
 import pandas as pd
 
+# Load env vars:
 dotenv.load_dotenv()
-
 sftp_host = os.getenv('hostname_sftp')
 sftp_user = os.getenv('username_sftp')
 sftp_password = os.getenv('password_sftp')
 sftp_port = int(os.getenv('port_sftp'))
 
-#cnopts = pysftp.CnOpts(knownhosts='known_hosts')
+# Disable HostKeys for sftp connection:
 cnopts = pysftp.CnOpts()
 cnopts.hostkeys = None
 
+
 def load_file_from_ftp(dir, filenames):
+    '''
+    Description: Connects to SFTP remote server, and downloads one or more xls files and reads them as dataframes
+    Arguments:
+        - 'dir'(string): path of the directory where the files are stored
+        - 'filenames'(list): list of string, containing the name of the files to download
+    Returns: 
+        - 'found_files'(list): list of pandas dataframes
+    '''
     found_files = []
-
     with pysftp.Connection(sftp_host, username=sftp_user, password=sftp_password, port=sftp_port, cnopts=cnopts) as sftp:
-        #transport = paramiko.Transport((sftp_host, sftp_port))
-        #sftp = paramiko.SFTPClient.from_transport(transport)
         print('Connected to SFTP server')
-
-        # Navigate to the remote folder
-        #sftp.chdir(dir)
-        #print('Changed remote directory to ftp')
-
         # Get the list of files in the folder
         folders = sftp.listdir()
         print(folders)
 
-        #for file in files:
-            #if file in filenames:
-                #found_files.append(sftp.open(file))
-        file = sftp.open(dir + filenames[0])
-        df_file = pd.read_excel(file)
-        found_files.append(df_file)
-        # Filter the list to only XLS files
-        # xls_files = [file for file in remote_files if file.endswith('.xls')]
+        for xls_file in filenames:
+            file = sftp.open(dir + xls_file)
+            df_file = pd.read_excel(file)
+            found_files.append(df_file)
         
     # Close the SFTP connection
     sftp.close()
     print("Disconnected from SFTP server")
 
-    return found_files
-    #return sftp.open(xls_files[0])
- 
+    return found_files 
