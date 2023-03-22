@@ -3,12 +3,17 @@ import requests
 import json
 import dotenv
 
+# Load env vars:
 dotenv.load_dotenv()
-
 airtable_api_url = os.getenv('airtable_api_url')
 airtable_api_key = os.getenv('airtable_api_key')
 
 def save_to_airtable(records):
+    '''
+    Description: Updates records in Airtable from dictionaries, parsed as json file
+    Arguments:
+        - 'records'(list): list of dictionaries with the records to be updated
+    '''
     # Define the headers for the request
     headers = {
         "Authorization": f"Bearer {airtable_api_key}",
