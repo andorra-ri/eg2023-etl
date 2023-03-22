@@ -1,6 +1,11 @@
-import json
-
 def create_lists(df):
+    '''
+    Description: Creates a list of dictionaries with data from each political party data
+    Arguments: 
+        - 'df'(pd dataframe): dataframe where we will extract the data
+    Returns:
+        - 'llistes'(list): list of dictionaries for each political party
+    '''
     llistes = [
         # Llista Nacional:
         {
