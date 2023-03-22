@@ -17,12 +17,15 @@ cnopts.hostkeys = None
 
 def load_file_from_ftp(dir, filenames):
     '''
-    Description: Connects to SFTP remote server, and downloads one or more xls files and reads them as dataframes
+    Connects to SFTP remote server, and downloads one or more xls files and reads them as dataframes
     Arguments:
         - 'dir'(string): path of the directory where the files are stored
         - 'filenames'(list): list of string, containing the name of the files to download
     Returns: 
         - 'found_files'(list): list of pandas dataframes
+    Raises:
+        Any exception raised by pysftp or pandas.read_excel() methods
+
     '''
     found_files = []
     with pysftp.Connection(sftp_host, username=sftp_user, password=sftp_password, port=sftp_port, cnopts=cnopts) as sftp:
