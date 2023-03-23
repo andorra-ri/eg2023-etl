@@ -5,24 +5,24 @@ Description: Script to download files from a remote SFTP folder, read them as da
 
 # Import dependencies
 from ftp import load_file_from_ftp
-from llistes_nacionals_parroquials import create_lists
-from airtable import save_to_airtable
+from llistes_nacionals_parroquials import create_lists, blanks_nulls_count
+from airtable import save_to_airtable, save_to_airtable_2
 
 # Define script parameters:
 remote_path = '/rtva/'
-files = ['Escrutini_Parroquial.xls'] 
+files = ['Escrutini_Parroquial.xls', 'Detall_Escrutini_Parroquial.xls'] 
 
 files = load_file_from_ftp(remote_path, files)
 df = files[0]
+df_2 = files[1]
 lists = create_lists(df); print(lists)
+other_votes = blanks_nulls_count(df_2)
 
 save_to_airtable(lists[:10])
 save_to_airtable(lists[11:21])
 save_to_airtable(lists[22:26])
-#TESTING!!
-    #In case we have a second file containing participation stats, we want to retrieve the blanks and nulls:
-#bdf_blanks_nulls = pd.read_excel(sftp.open(remote_file_2))
-#Appropiate treatment:
+save_to_airtable_2(other_votes)
+
 
 
 #2. Reformat code: generalize second file + upload records and upload other pending records
