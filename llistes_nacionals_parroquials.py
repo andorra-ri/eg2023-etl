@@ -181,3 +181,63 @@ def create_lists(df):
     ]
 
     return (llistes)
+
+def blanks_nulls_count(df2):
+    records = [
+        {
+            'id': 'recUWjC340R8JVvPi',
+            'fields': {
+                'blanks': int(df2.iloc[4,4] + df2.iloc[11,4] + df2.iloc[18,4] + df2.iloc[25,4], df2.iloc[32,4] + df2.iloc[39,4], df2.iloc[46,4]),
+                'nulls': int(df2.iloc[5,4] + df2.iloc[12,4] + df2.iloc[19,4] + df2.iloc[26,4], df2.iloc[33,4] + df2.iloc[40,4], df2.iloc[47,4])
+            } # Nacional
+        },
+        {
+            'id': 'rec1n6tl2K8JBVy40',
+            'fields': {
+                'blanks': int(df2.iloc[54,4]),
+                'nulls': int(df2.iloc[55,4])            
+            } # Canillo
+        },
+        {
+            'id': 'recKIMYVZMkSdaO0s',
+            'fields': {
+                'blanks': int(df2.iloc[61,4]),
+                'nulls': int(df2.iloc[62,4])            
+            } # Encamp
+        },     
+        {
+            'id': 'recx9mgus913mGRah',
+            'fields': {
+                'blanks': int(df2.iloc[68,4]),
+                'nulls': int(df2.iloc[69,4])            
+            } # Ordino
+        }, 
+        {
+            'id': 'recO7jJW1FJdF4HSW',
+            'fields': {
+                'blanks': int(df2.iloc[75,4]),
+                'nulls': int(df2.iloc[76,4])            
+            } # Massana
+        },     
+        {
+            'id': 'recmS2Mc9JaQLVZnq',
+            'fields': {
+                'blanks': int(df2.iloc[82,4]),
+                'nulls': int(df2.iloc[83,4])            
+            } # Andorra
+        },
+        {
+            'id': 'rec5KQgVvTzzK9PDa',
+            'fields': {
+                'blanks': int(df2.iloc[89,4]),
+                'nulls': int(df2.iloc[90,4])            
+            } # StJulià
+        },
+        {
+            'id': 'reciwdMIR1vmv96V3',
+            'fields': {
+                'blanks': int(df2.iloc[96,4]),
+                'nulls': int(df2.iloc[97,4])            
+            } # Escaldes
+        },
+    ]
