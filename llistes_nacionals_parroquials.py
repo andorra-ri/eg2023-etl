@@ -187,15 +187,15 @@ def blanks_nulls_count(df2):
         {
             'id': 'recUWjC340R8JVvPi',
             'fields': {
-                'blanks': int(df2.iloc[4,4] + df2.iloc[11,4] + df2.iloc[18,4] + df2.iloc[25,4], df2.iloc[32,4] + df2.iloc[39,4], df2.iloc[46,4]),
-                'nulls': int(df2.iloc[5,4] + df2.iloc[12,4] + df2.iloc[19,4] + df2.iloc[26,4], df2.iloc[33,4] + df2.iloc[40,4], df2.iloc[47,4])
+                'blanks': int(df2.iloc[4,4]) + int(df2.iloc[11,4]) + int(df2.iloc[18,4]) + int(df2.iloc[25,4]) + int(df2.iloc[32,4]) + int(df2.iloc[39,4]) + int(df2.iloc[46,4]),
+                'nulls': int(df2.iloc[5,4]) + int(df2.iloc[12,4]) + int(df2.iloc[19,4]) + int(df2.iloc[26,4]) + int(df2.iloc[33,4]) + int(df2.iloc[40,4]) + int(df2.iloc[47,4])
             } # Nacional
         },
         {
             'id': 'rec1n6tl2K8JBVy40',
             'fields': {
                 'blanks': int(df2.iloc[54,4]),
-                'nulls': int(df2.iloc[55,4])            
+                'nulls': int(df2.iloc[55,4])       
             } # Canillo
         },
         {
@@ -241,3 +241,8 @@ def blanks_nulls_count(df2):
             } # Escaldes
         },
     ]
+
+    return(records)
+
+#blanks_nacional = 50 + 80 + 169 + 63 + 2 + 5 + 1 = 380
+#Nulls_nacional = 167 + 15 + 100 + 50 + 5 + 10 + 3 = 350
