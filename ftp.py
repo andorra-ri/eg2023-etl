@@ -9,10 +9,7 @@ sftp_host = os.getenv('hostname_sftp')
 sftp_user = os.getenv('username_sftp')
 sftp_password = os.getenv('password_sftp')
 sftp_port = int(os.getenv('port_sftp'))
-
-# Disable HostKeys for sftp connection:
-cnopts = pysftp.CnOpts()
-cnopts.hostkeys = None
+hostkeys = os.getenv('key')
 
 
 def load_file_from_ftp(dir, filenames):
@@ -28,7 +25,7 @@ def load_file_from_ftp(dir, filenames):
 
     '''
     found_files = []
-    with pysftp.Connection(sftp_host, username=sftp_user, password=sftp_password, port=sftp_port, cnopts=cnopts) as sftp:
+    with pysftp.Connection(sftp_host, username=sftp_user, password=sftp_password, port=sftp_port) as sftp:
         print('Connected to SFTP server')
         # Get the list of files in the folder
         folders = sftp.listdir()
