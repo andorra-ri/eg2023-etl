@@ -15,7 +15,7 @@ files = ['Escrutini_Parroquial.xls', 'Detall_Escrutini_Parroquial.xls']
 files = load_file_from_ftp(remote_path, files)
 df = files[0]
 df_2 = files[1]
-lists = create_lists(df); print(lists)
+lists = create_lists(df)
 other_votes = blanks_nulls_count(df_2)
 
 save_to_airtable(lists[:10])
@@ -26,4 +26,4 @@ save_to_airtable_2(other_votes)
 
 
 #2. Reformat code: generalize second file + upload records and upload other pending records
-#3. Push to CloudFunction and scheduler
+#3. Push to CloudFunction and scheduler => crontab.guru
