@@ -23,8 +23,3 @@ save_to_airtable(lists[:10])
 save_to_airtable(lists[11:21])
 save_to_airtable(lists[22:26])
 save_to_airtable_2(other_votes)
-
-
-
-#2. Reformat code: generalize second file + upload records and upload other pending records
-#3. Push to CloudFunction and scheduler => crontab.guru
