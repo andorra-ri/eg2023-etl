@@ -5,6 +5,7 @@ Description: Script to download files from a remote SFTP folder, read them as da
 
 # Import dependencies
 from ftp import load_file_from_ftp
+from ftp_paramiko import load_file_from_sftp
 from llistes_nacionals_parroquials import create_lists, blanks_nulls_count
 from airtable import save_to_airtable, save_to_airtable_2
 
@@ -12,7 +13,7 @@ from airtable import save_to_airtable, save_to_airtable_2
 remote_path = '/rtva/'
 files = ['Escrutini_Parroquial.xls', 'Detall_Escrutini_Parroquial.xls'] 
 
-files = load_file_from_ftp(remote_path, files)
+files = load_file_from_sftp(remote_path, files)
 df = files[0]
 df_2 = files[1]
 lists = create_lists(df)
