@@ -1,7 +1,5 @@
 import paramiko
 import os
-import io
-import base64
 import dotenv
 import pandas as pd
 
