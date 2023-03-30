@@ -19,7 +19,10 @@ df_2 = files[1]
 lists = create_lists(df)
 other_votes = blanks_nulls_count(df_2)
 
-save_to_airtable(lists[:10])
-save_to_airtable(lists[11:21])
-save_to_airtable(lists[22:26])
+batch_size = 9
+length_lists = len(lists)
+for i in range(length_lists):
+    batch = lists[i:i+batch_size]
+    save_to_airtable(batch)
+
 save_to_airtable_2(other_votes)
