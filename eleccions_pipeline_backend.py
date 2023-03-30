@@ -7,7 +7,7 @@ Description: Script to download files from a remote SFTP folder, read them as da
 from ftp import load_file_from_ftp
 from ftp_paramiko import load_file_from_sftp
 from llistes_nacionals_parroquials import create_lists, blanks_nulls_count
-from airtable import save_to_airtable, save_to_airtable_2
+from airtable import save_lists_to_airtable, save_results_to_airtable
 
 # Define script parameters:
 remote_path = '/rtva/'
@@ -21,8 +21,10 @@ other_votes = blanks_nulls_count(df_2)
 
 batch_size = 9
 length_lists = len(lists)
-for i in range(length_lists):
-    batch = lists[i:i+batch_size]
-    save_to_airtable(batch)
 
-save_to_airtable_2(other_votes)
+for i in range(0, len(lists), batch_size):
+    batch = lists[i:i+batch_size]
+    print('Indexes: ' + str(i) + ':' + str(i+batch_size))
+    save_lists_to_airtable(batch)
+
+save_results_to_airtable(other_votes)
