@@ -8,7 +8,7 @@ dotenv.load_dotenv()
 airtable_api_url = os.getenv('airtable_api_url')
 airtable_api_key = os.getenv('airtable_api_key')
 
-def save_to_airtable(records):
+def save_lists_to_airtable(records):
     '''
     Description: Updates records in Airtable from dictionaries, parsed as json file
     Arguments:
@@ -20,14 +20,13 @@ def save_to_airtable(records):
         "Content-Type": "application/json"
     }
 
-    print(airtable_api_key, ' ', airtable_api_url)
     response = requests.patch(airtable_api_url + '/lists', headers=headers, data=json.dumps({'records': records}))
     if response.status_code == 200:
-        print("Record updated successfully")
+        print("Records updated successfully")
     else:
         print("Error updating record: " + json.dumps(response.json()))
 
-def save_to_airtable_2(records):
+def save_results_to_airtable(records):
     '''
     Description: Updates records in Airtable from dictionaries, parsed as json file
     Arguments:
@@ -37,6 +36,8 @@ def save_to_airtable_2(records):
         "Authorization": f"Bearer {airtable_api_key}",
         "Content-Type": "application/json"
     }
+
+    print("To save: " + json.dumps({'records': records}))
     response = requests.patch(airtable_api_url + '/results', headers=headers, data=json.dumps({'records': records}))
     if response.status_code == 200:
         print("Record updated successfully")
