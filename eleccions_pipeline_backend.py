@@ -24,7 +24,6 @@ length_lists = len(lists)
 
 for i in range(0, len(lists), batch_size):
     batch = lists[i:i+batch_size]
-    print('Indexes: ' + str(i) + ':' + str(i+batch_size))
     save_lists_to_airtable(batch)
 
 save_results_to_airtable(other_votes)
