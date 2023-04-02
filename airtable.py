@@ -24,7 +24,7 @@ def save_lists_to_airtable(records):
     if response.status_code == 200:
         print("Records updated successfully")
     else:
-        print("Error updating record: " + json.dumps(response.json()))
+        print("\033[91m Error updating record: " + json.dumps(response.json()) + '\033[0m')
 
 def save_results_to_airtable(records):
     '''
@@ -42,4 +42,4 @@ def save_results_to_airtable(records):
     if response.status_code == 200:
         print("Record updated successfully")
     else:
-        print("Error updating record: " + json.dumps(response.json()))
+        print("\033[91m Error updating record: " + json.dumps(response.json()) + '\033[0m')
